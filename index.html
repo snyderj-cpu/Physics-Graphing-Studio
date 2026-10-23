@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Physics Graph Studio</title><meta name="description" content="Graph measurements and uncertainties, adjust gradient limits, and export A4 graphs and Desmos equations."><link rel="stylesheet" href="vendor/slickgrid/slick.grid.css"><link rel="stylesheet" href="studio.css"></head><body>
+<header><div class="brand"><span class="mark">∿</span><div><h1>Physics Graph Studio</h1><p>MEASURE · FIT · EXPLORE</p></div></div><span class="badge">IB PHYSICS WORKSPACE</span></header>
+<nav aria-label="Graph actions"><div class="group"><button id="undo">↶ Undo</button><button id="redo">↷ Redo</button><button id="share">Copy graph URL</button><button onclick="copyTable()">Copy table</button></div><div class="group"><button id="desmos">Desmos equations ↗</button><button class="primary" id="save">Save graph ↓</button></div></nav>
+<main><aside><section class="card"><div class="section-head"><h2>Measurements</h2><span id="pointCount"></span></div><p class="hint">Paste cells from Excel or Sheets. Uncertainty accepts a value or percentage, e.g. 5%.</p><div id="myGrid"></div><div class="row"><button id="addRows">+ 10 rows</button><button id="clear">Clear data</button></div><p class="hint">Scientific notation: 1.2e3 or 1.2x10^3. Select cells to copy, paste, or delete.</p></section>
+<section class="card"><h2>Appearance</h2><div class="fields"><label>All text scale (%)<input id="allSize" type="number" min="60" max="200" value="100"></label><label>Interface text (px)<input id="uiSize" type="number" min="10" max="28" value="14"></label><label>Graph title (px)<input id="titleSize" type="number" min="8" max="48" value="20"></label><label>Axis labels (px)<input id="axisSize" type="number" min="8" max="40" value="16"></label><label>Tick labels (px)<input id="tickSize" type="number" min="8" max="36" value="13"></label><label>Legend text (px)<input id="legendSize" type="number" min="8" max="36" value="13"></label></div></section></aside>
+<div class="workspace"><section class="card plotcard"><div class="section-head"><div><h2>Your graph</h2><p class="hint">Click a title or axis to edit labels and scales.</p></div><button id="settings">Graph settings</button></div><div class="graphClass"><canvas id="graphCanvas" aria-label="Measurement graph with error bars and fitted lines"></canvas></div><div class="dragbar"><label>Adjust line <select id="dragLine"><option value="0">Off</option><option value="2" selected>Maximum gradient</option><option value="3">Minimum gradient</option><option value="1">Best fit</option></select></label><button id="resetLines">Reset automatic fits</button><span class="hint">Drag a circle to rotate; drag the line to shift it.</span></div><div id="lineSummary" aria-live="polite"></div></section>
+<section class="card feedback"><div class="section-head"><h2>Graph feedback</h2><span class="badge">LIVE CHECKS</span></div><p class="hint">Original tool’s guidance; use your judgment when interpreting fit and uncertainty.</p><div id="feedbackBoxid"></div></section></div></main>
+<footer>Based on the <a href="https://www.beepboopmachines.com/" target="_blank" rel="noopener">Beep Boop Machines IB Physics Graphing Tool</a>. Extended with typography, print export, drag controls and Desmos export. Data stays in your browser; copied graph URLs contain your data.</footer>
+<dialog id="studioDialog"><div class="section-head"><h2 id="dialogTitle"></h2><button id="closeDialog" aria-label="Close dialog">✕</button></div><div id="dialogBody"></div></dialog><div id="snackbar" role="status"></div>
+<div id="myModal" hidden><span class="close"></span><div id="modalContent"></div></div>
+<script src="vendor/slickgrid/lib/firebugx.js"></script>
+<script src="vendor/slickgrid/lib/jquery-1.12.4.min.js"></script>
+<script src="vendor/slickgrid/lib/jquery-ui.min.js"></script>
+<script src="vendor/slickgrid/lib/jquery.event.drag-2.3.0.js"></script>
+<script src="vendor/slickgrid/slick.core.js"></script>
+<script src="vendor/slickgrid/plugins/slick.cellrangedecorator.js"></script>
+<script src="vendor/slickgrid/plugins/slick.cellrangeselector.js"></script>
+<script src="vendor/slickgrid/plugins/slick.cellselectionmodel.js"></script>
+<script src="vendor/slickgrid/plugins/slick.autotooltips.js"></script>
+<script src="vendor/slickgrid/plugins/slick.cellexternalcopymanager.js"></script>
+<script src="vendor/slickgrid/plugins/slick.rowmovemanager.js"></script>
+<script src="vendor/slickgrid/slick.formatters.js"></script>
+<script src="vendor/slickgrid/slick.editors.js"></script>
+<script src="vendor/slickgrid/slick.grid.js"></script>
+<script src="vendor/chart.js/dist/Chart.js"></script><script src="table.js"></script><script src="graph.js"></script><script src="feedback.js"></script><script src="windowFunctions.js"></script><script src="studio.js"></script></body></html>
